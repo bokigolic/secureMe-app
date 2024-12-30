@@ -54,45 +54,11 @@ body::before {
   overflow: hidden;
 }
 
-.container::before {
-  content: "";
-  position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 200px;
-  height: 200px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  animation: bubbleMove 6s infinite;
-}
-
-@keyframes bubbleMove {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-20px, 20px);
-  }
-}
-
 h1 {
   font-size: 26px;
   color: white;
   text-align: center;
   margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
-}
-
-h1::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: #ffffffaa;
-  margin: 10px auto;
-  border-radius: 50px;
 }
 
 input {
@@ -104,28 +70,27 @@ input {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.3);
   color: white;
+  font-weight: 600;
   outline: none;
   transition: box-shadow 0.3s, background-color 0.3s;
 }
 
 input:focus {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(41, 39, 39, 0.8);
+  background-color: rgba(70, 67, 67, 0.5);
 }
 
 button {
-  width: 100%;
-  padding: 14px;
+  width: 50%;
+  padding: 10px;
   font-size: 18px;
   font-weight: bold;
-  background: linear-gradient(45deg, #836767, #4c84c5);
+  background: linear-gradient(45deg, #574646, #cad7e6);
   color: white;
   border: none;
   border-radius: 50px;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
-  overflow: hidden;
 }
 
 button:hover {
@@ -133,29 +98,9 @@ button:hover {
   box-shadow: 0 10px 20px rgba(255, 111, 97, 0.4);
 }
 
-button::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 150%;
-  height: 150%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translate(-50%, -50%) scale(0);
-  border-radius: 50%;
-  z-index: 1;
-  transition: transform 0.4s, opacity 0.4s;
-}
-
-button:active::after {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 0;
-}
-
 ul {
   list-style: none;
   padding: 0;
-  margin-top: 20px;
 }
 
 li {
@@ -167,12 +112,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  animation: slideIn 0.5s ease-out;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-li strong {
-  font-size: 16px;
 }
 
 li button {
@@ -208,18 +148,7 @@ li button:active {
   }
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Responsivnost */
+/* Responsivnost za veće ekrane */
 @media (min-width: 481px) {
   .container {
     max-width: 600px;
@@ -233,70 +162,48 @@ li button:active {
   button {
     font-size: 18px;
   }
-
-  li {
-    padding: 16px;
-  }
 }
 
-/* Navbar stilovi */
-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px 20px;
-  background: linear-gradient(120deg, #34344a, #505066);
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0 10px;
-  transition: color 0.3s, transform 0.3s;
-}
-
-nav a:hover {
-  color: #ffd700;
-  transform: scale(1.1);
-}
-
-nav button {
-  background: #ff6f61;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-  margin-left: 10px;
-}
-
-nav button:hover {
-  background: #ff9a9e;
-  transform: scale(1.1);
-}
-
-nav button:active {
-  transform: scale(0.9);
-}
-
-/* Responsivnost za manje ekrane */
 @media (max-width: 768px) {
-  nav {
-    flex-direction: column;
+  body {
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fbc2eb);
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 90%;
   }
 
-  nav a,
-  nav button {
-    margin-bottom: 10px;
+  h1 {
+    font-size: 22px;
+  }
+
+  input,
+  button {
+    font-size: 16px;
   }
 }
+
+/* iPhone Specifične (ili bilo koji mobilni specifični tweaki) */
+@media (max-width: 375px) {
+  body {
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fbc2eb);
+    padding-top: 20px;
+  }
+  .container {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  input,
+  button {
+    font-size: 14px;
+  }
+}
+
 button {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -304,49 +211,4 @@ button {
 button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-input {
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-input:focus {
-  border-color: #505066;
-  box-shadow: 0 0 8px rgba(80, 80, 102, 0.5);
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #34344a;
-  padding: 10px 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.nav-link {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #ffa500; /* Elegantna narančasta boja */
-}
-
-button {
-  background-color: #ffa500;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #ff8c00; /* Tamnija nijansa narančaste */
 }

@@ -1,19 +1,20 @@
-// Service Worker
+/* eslint-disable no-restricted-globals */
+import { precacheAndRoute } from 'workbox-precaching';
 
-const CACHE_NAME = "secureme-cache-v1";
-const urlsToCache = [
-  "/",
-  "/index.html",
-  "/static/js/bundle.js",
-  "/static/css/main.css",
-  "/logo192.png",
-  "/logo512.png"
-];
+// Trebalo bi da se automatski dodaju URL-ovi koji treba da se keširaju.
+precacheAndRoute(self.__WB_MANIFEST);
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
+    caches.open("secureme-cache-v1").then((cache) => {
+      return cache.addAll([
+        "/",
+        "/index.html",
+        "/static/js/bundle.js",
+        "/static/css/main.css",
+        "/logo192.png",
+        "/logo512.png",
+      ]);
     })
   );
 });
