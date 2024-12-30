@@ -1,32 +1,43 @@
 import React, { useState } from "react";
-import CONFIG from "../config"; // Uvoz lozinke iz config.js
+import passwordConfig from "../passwordConfig";
+import pinConfig from "../pinConfig";
+
 
 function Login({ setIsLoggedIn }) {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    if (password === CONFIG.PASSWORD) { // Provera lozinke iz config fajla
+    if (password === passwordConfig.correctPassword) {
       setIsLoggedIn(true);
       localStorage.setItem("isLoggedIn", "true");
-      alert("Login successful!");
     } else {
       alert("Incorrect password!");
     }
   };
 
+  const handlePinSubmit = async () => {
+    if (password === pinConfig.configPin) {
+      alert("PIN recognized!");
+    } else {
+      alert("Invalid PIN!");
+    }
+  };
+
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: "center", padding: "20px" }}>
       <h1>Login</h1>
       <input
         type="password"
-        placeholder="Enter password"
+        placeholder="Enter password or PIN"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         style={{ marginBottom: "10px", padding: "10px", width: "200px" }}
       />
-      <br />
-      <button onClick={handleLogin} style={{ padding: "10px 20px", cursor: "pointer" }}>
-        Login
+      <button onClick={handleLogin} style={{ marginBottom: "20px", padding: "10px 20px" }}>
+        Login with Password
+      </button>
+      <button onClick={handlePinSubmit} style={{ padding: "10px 20px" }}>
+        Submit PIN
       </button>
     </div>
   );

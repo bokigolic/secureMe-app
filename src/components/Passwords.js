@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import pinConfig from "../pinConfig"; // Import PIN-a iz konfiguracionog fajla
 
 function Passwords() {
   const [passwords, setPasswords] = useState([]);
@@ -9,8 +10,6 @@ function Passwords() {
   const [showPasswords, setShowPasswords] = useState(false);
   const [pin, setPin] = useState(""); // PIN za prikaz lozinki
   const [isPinValid, setIsPinValid] = useState(false);
-
-  const correctPin = "1234"; // PIN kod
 
   useEffect(() => {
     const storedPasswords = localStorage.getItem("passwords");
@@ -55,7 +54,7 @@ function Passwords() {
   };
 
   const handlePinSubmit = () => {
-    if (pin === correctPin) {
+    if (pin === pinConfig.configPin) {
       setIsPinValid(true);
       setShowPasswords(true);
       alert("Access granted!");
@@ -156,7 +155,7 @@ function Passwords() {
           onChange={(e) => setNewEntry({ ...newEntry, category: e.target.value })}
           style={dropdownStyle}
         >
-          <option value="">Category</option>
+          <option value="">Select Category</option>
           {categories.map((category) => (
             <option key={category} value={category}>
               {category}
