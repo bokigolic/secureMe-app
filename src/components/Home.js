@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 function Home() {
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <h1>Welcome to Your Personal Data Manager</h1>
-      <p>Use the navigation to manage your personal information and passwords.</p>
+      <p>Use the navigation above to manage your personal information and passwords.</p>
     </div>
   );
 }

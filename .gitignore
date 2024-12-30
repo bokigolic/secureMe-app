@@ -138,6 +138,9 @@ dist
 # FuseBox cache
 .fusebox/
 
+#passwoer
+config.js
+
 # DynamoDB Local files
 .dynamodb/
 

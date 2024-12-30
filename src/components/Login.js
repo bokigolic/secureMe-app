@@ -1,28 +1,33 @@
 import React, { useState } from "react";
+import CONFIG from "../config"; // Uvoz lozinke iz config.js
 
 function Login({ setIsLoggedIn }) {
   const [password, setPassword] = useState("");
-  const correctPassword = "mysecretpassword"; // Lozinka (kasnije se može šifrovati)
 
   const handleLogin = () => {
-    if (password === correctPassword) {
-      setIsLoggedIn(true); // Ako je lozinka tačna, postavljamo login state na true
-      localStorage.setItem("isLoggedIn", "true"); // Čuvamo login status
+    if (password === CONFIG.PASSWORD) { // Provera lozinke iz config fajla
+      setIsLoggedIn(true);
+      localStorage.setItem("isLoggedIn", "true");
+      alert("Login successful!");
     } else {
       alert("Incorrect password!");
     }
   };
 
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <h1>Login</h1>
       <input
         type="password"
         placeholder="Enter password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        style={{ marginBottom: "10px", padding: "10px", width: "200px" }}
       />
-      <button onClick={handleLogin}>Login</button>
+      <br />
+      <button onClick={handleLogin} style={{ padding: "10px 20px", cursor: "pointer" }}>
+        Login
+      </button>
     </div>
   );
 }
