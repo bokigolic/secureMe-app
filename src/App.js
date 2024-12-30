@@ -25,14 +25,13 @@ function App() {
       <div style={{ padding: "20px" }}>
         {isLoggedIn ? (
           <>
-            <nav style={{ marginBottom: "20px" }}>
-              <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
-              <Link to="/personal-info" style={{ marginRight: "10px" }}>Personal Info</Link>
-              <Link to="/passwords">Passwords</Link>
-              <button onClick={handleLogout} style={{ marginLeft: "10px", cursor: "pointer" }}>
-                Logout
-              </button>
+            <nav>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/personal-info" className="nav-link">Info</Link>
+              <Link to="/passwords" className="nav-link">Passwords</Link>
+              <button onClick={handleLogout}>Logout</button>
             </nav>
+
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/personal-info" element={<PersonalInfo />} />
