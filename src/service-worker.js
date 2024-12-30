@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+
 const CACHE_NAME = "secureme-cache-v1";
 const urlsToCache = [
   "/",
@@ -5,7 +7,7 @@ const urlsToCache = [
   "/static/js/bundle.js",
   "/static/css/main.css",
   "/logo192.png",
-  "/logo512.png"
+  "/logo512.png",
 ];
 
 self.addEventListener("install", (event) => {
