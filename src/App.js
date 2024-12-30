@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import Home from "./components/Home";
 import PersonalInfo from "./components/PersonalInfo";
 import Passwords from "./components/Passwords";
@@ -28,14 +28,40 @@ function App() {
           <>
             <nav style={navStyle}>
               <div>
-                <Link to="/" className="nav-link">Home</Link>
-                <Link to="/personal-info" className="nav-link">Info</Link>
-                <Link to="/passwords" className="nav-link">Passwords</Link>
+                <NavLink
+                  to="/"
+                  className="nav-link"
+                  style={({ isActive }) =>
+                    isActive ? activeNavLinkStyle : navLinkStyle
+                  }
+                >
+                  Home
+                </NavLink>
+                <NavLink
+                  to="/personal-info"
+                  className="nav-link"
+                  style={({ isActive }) =>
+                    isActive ? activeNavLinkStyle : navLinkStyle
+                  }
+                >
+                  Info
+                </NavLink>
+                <NavLink
+                  to="/passwords"
+                  className="nav-link"
+                  style={({ isActive }) =>
+                    isActive ? activeNavLinkStyle : navLinkStyle
+                  }
+                >
+                  Passwords
+                </NavLink>
               </div>
-              <button onClick={handleLogout}>Logout</button>
+              <button onClick={handleLogout} style={logoutButtonStyle}>
+                Logout
+              </button>
             </nav>
 
-            <div style={{ flex: 1, overflowY: "auto" }}>
+            <div style={contentStyle}>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/personal-info" element={<PersonalInfo />} />
@@ -55,7 +81,7 @@ function App() {
 const appContainerStyle = {
   display: "flex",
   flexDirection: "column",
-  height: "100vh", // Ograničava aplikaciju na visinu ekrana
+  height: "100vh",
 };
 
 const navStyle = {
@@ -63,8 +89,40 @@ const navStyle = {
   justifyContent: "space-between",
   alignItems: "center",
   backgroundColor: "#34344a",
-  padding: "5px 15px", // Smanjena visina
+  padding: "10px 20px",
+  boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
 };
 
+const navLinkStyle = {
+  margin: "0 10px",
+  textDecoration: "none",
+  color: "#FFFFFF",
+  fontSize: "16px",
+  padding: "5px 10px",
+  transition: "all 0.3s ease",
+};
+
+const activeNavLinkStyle = {
+  ...navLinkStyle,
+  color: "#FFA500",
+  borderBottom: "2px solid #FFA500",
+};
+
+const logoutButtonStyle = {
+  padding: "8px 15px",
+  backgroundColor: "#FFA500",
+  color: "#FFFFFF",
+  border: "none",
+  borderRadius: "5px",
+  cursor: "pointer",
+  fontSize: "16px",
+  transition: "background-color 0.3s ease",
+};
+
+const contentStyle = {
+  flex: 1,
+  overflowY: "auto",
+  padding: "20px",
+};
 
 export default App;
