@@ -6,7 +6,9 @@ function PersonalInfo() {
     title: "",
     description: "",
     images: [],
-  }); // Novi unos
+  }); // Novi unos ili unos za ažuriranje
+  const [isEditing, setIsEditing] = useState(false); // Praćenje da li ažuriramo stavku
+  const [editingIndex, setEditingIndex] = useState(null); // Indeks stavke koju ažuriramo
 
   const handleInputChange = (e) => {
     setNewInfo({ ...newInfo, [e.target.name]: e.target.value });
@@ -38,13 +40,28 @@ function PersonalInfo() {
       return;
     }
 
-    setInfoList([...infoList, newInfo]);
+    if (isEditing) {
+      const updatedList = [...infoList];
+      updatedList[editingIndex] = newInfo;
+      setInfoList(updatedList);
+      setIsEditing(false);
+      setEditingIndex(null);
+    } else {
+      setInfoList([...infoList, newInfo]);
+    }
+
     setNewInfo({ title: "", description: "", images: [] }); // Resetovanje polja
   };
 
   const handleDeleteInfo = (index) => {
     const updatedList = infoList.filter((_, i) => i !== index);
     setInfoList(updatedList);
+  };
+
+  const handleUpdateInfo = (index) => {
+    setNewInfo(infoList[index]);
+    setIsEditing(true);
+    setEditingIndex(index);
   };
 
   const handleDeleteImage = (infoIndex, imageIndex) => {
@@ -59,7 +76,7 @@ function PersonalInfo() {
     <div style={containerStyle}>
       <h1>Manage Your Personal Info</h1>
 
-      {/* Forma za unos nove informacije */}
+      {/* Forma za unos ili ažuriranje informacije */}
       <div style={formStyle}>
         <input
           type="text"
@@ -100,7 +117,7 @@ function PersonalInfo() {
           ))}
         </div>
         <button onClick={handleAddInfo} style={addButtonStyle}>
-          Add Info
+          {isEditing ? "Update Info" : "Add Info"}
         </button>
       </div>
 
@@ -127,6 +144,12 @@ function PersonalInfo() {
                 </div>
               ))}
             </div>
+            <button
+              onClick={() => handleUpdateInfo(index)}
+              style={updateButtonStyle}
+            >
+              Update Info
+            </button>
             <button
               onClick={() => handleDeleteInfo(index)}
               style={deleteButtonStyle}
@@ -174,6 +197,16 @@ const addButtonStyle = {
 const deleteButtonStyle = {
   padding: "5px 10px",
   backgroundColor: "red",
+  color: "white",
+  border: "none",
+  borderRadius: "5px",
+  cursor: "pointer",
+  margin: "5px",
+};
+
+const updateButtonStyle = {
+  padding: "5px 10px",
+  backgroundColor: "orange",
   color: "white",
   border: "none",
   borderRadius: "5px",
