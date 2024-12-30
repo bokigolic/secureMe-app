@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
+import Passwords from './components/Paswords';
 //import PersonalInfo from './components/PersonalInfo';
-//import Passwords from './components/Passwords';
+
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/*<Route path="/personal-info" element={<PersonalInfo />} />
-          <Route path="/passwords" element={<Passwords />} />*/}
+          {/*<Route path="/personal-info" element={<PersonalInfo />} />*/}
+          <Route path="/passwords" element={<Passwords />} />
         </Routes>
       </div>
     </Router>

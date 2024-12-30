@@ -1,0 +1,240 @@
+/* Reset osnovnih stilova */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fbc2eb);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Animirana pozadina */
+body::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, #000000, #2558a5, #61a1bb, #5814f8);
+  animation: gradientMove 10s infinite linear;
+  z-index: -1;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Staklasti efekat (Glassmorphism) */
+.container {
+  width: 90%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeIn 1s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: bubbleMove 6s infinite;
+}
+
+@keyframes bubbleMove {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-20px, 20px);
+  }
+}
+
+h1 {
+  font-size: 26px;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #ffffffaa;
+  margin: 10px auto;
+  border-radius: 50px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  outline: none;
+  transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+input:focus {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #836767, #4c84c5);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 111, 97, 0.4);
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  z-index: 1;
+  transition: transform 0.4s, opacity 0.4s;
+}
+
+button:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+li {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 14px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideIn 0.5s ease-out;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+li strong {
+  font-size: 16px;
+}
+
+li button {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  background: white;
+  color: #ff6f61;
+  border-radius: 12px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+li button:hover {
+  background: #ff6f61;
+  color: white;
+  transform: scale(1.1);
+}
+
+li button:active {
+  transform: scale(0.9);
+}
+
+/* Animacije */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsivnost */
+@media (min-width: 481px) {
+  .container {
+    max-width: 600px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  input,
+  button {
+    font-size: 18px;
+  }
+
+  li {
+    padding: 16px;
+  }
+}
