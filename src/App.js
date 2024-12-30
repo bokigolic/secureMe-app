@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import PersonalInfo from "./components/PersonalInfo";
 import Passwords from "./components/Passwords";
 import Login from "./components/Login";
+import Footer from "./components/Footer";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,28 +23,48 @@ function App() {
 
   return (
     <Router>
-      <div style={{ padding: "20px" }}>
+      <div style={appContainerStyle}>
         {isLoggedIn ? (
           <>
-            <nav>
-              <Link to="/" className="nav-link">Home</Link>
-              <Link to="/personal-info" className="nav-link">Info</Link>
-              <Link to="/passwords" className="nav-link">Passwords</Link>
+            <nav style={navStyle}>
+              <div>
+                <Link to="/" className="nav-link">Home</Link>
+                <Link to="/personal-info" className="nav-link">Info</Link>
+                <Link to="/passwords" className="nav-link">Passwords</Link>
+              </div>
               <button onClick={handleLogout}>Logout</button>
             </nav>
 
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/personal-info" element={<PersonalInfo />} />
-              <Route path="/passwords" element={<Passwords />} />
-            </Routes>
+            <div style={{ flex: 1, overflowY: "auto" }}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/personal-info" element={<PersonalInfo />} />
+                <Route path="/passwords" element={<Passwords />} />
+              </Routes>
+            </div>
           </>
         ) : (
           <Login setIsLoggedIn={setIsLoggedIn} />
         )}
+        <Footer />
       </div>
     </Router>
   );
 }
+
+const appContainerStyle = {
+  display: "flex",
+  flexDirection: "column",
+  height: "100vh", // Ograničava aplikaciju na visinu ekrana
+};
+
+const navStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  backgroundColor: "#34344a",
+  padding: "5px 15px", // Smanjena visina
+};
+
 
 export default App;

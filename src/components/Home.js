@@ -111,22 +111,18 @@ const dropdownStyle = {
   fontSize: "14px",
   borderRadius: "8px",
   border: "1px solid #ccc",
-  backgroundColor: "#f9f9f9",
+  background: "linear-gradient(120deg, #ffffff, #f3f3f3)",
   color: "#333",
-  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  transition: "all 0.3s ease",
   appearance: "none", // Skida podrazumevani stil browsera
   cursor: "pointer",
-  backgroundImage: "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"10\" viewBox=\"0 0 10 10\"><path fill=\"%23333\" d=\"M0 3h10L5 8z\"/></svg>')",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "calc(100% - 10px) center",
-  backgroundSize: "10px",
-  transition: "border-color 0.3s ease, box-shadow 0.3s ease",
 };
 
 const dropdownHoverStyle = {
   ...dropdownStyle,
-  borderColor: "#888",
-  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+  background: "linear-gradient(120deg, #e3e3e3, #f5f5f5)",
+  borderColor: "#aaa",
 };
 
 
