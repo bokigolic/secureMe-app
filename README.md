@@ -1,74 +1,75 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# SecureMe - Password Manager Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Live Demo](https://secured.bojangolic.com/)
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+SecureMe is a secure, responsive web application designed to store and manage passwords, personal information, and sensitive data. It is built using React and incorporates modern web development best practices, including progressive web app (PWA) support, offline functionality, service workers, and a clean, user-friendly design.
 
-### `npm start`
+This application was built to help users safely store their passwords and personal information in a convenient, encrypted platform, accessible both online and offline.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Password Management**: Store, search, filter, and manage your passwords with ease. Each entry can have a site, password, and category, with options to delete or edit.
+- **Add Personal Information**: Add personal details, such as contact information, and store them securely.
+- **Image Upload**: Users can upload images for each entry to enhance personal or business records.
+- **Progressive Web App (PWA)**: The app is fully functional offline and can be installed on any device for easy access.
+- **Service Worker**: The app uses a service worker to cache content, making it available offline and improving performance.
+- **Responsive Design**: Optimized for mobile devices, with a fully responsive layout.
+- **QR Code Generation**: Generate QR codes for passwords, which can be scanned and quickly accessed on mobile devices.
+- **Authentication**: Secure login system with optional PIN verification for extra protection.
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend**:
+  - React
+  - React Router
+  - Workbox for Service Workers
+  - CSS3, Flexbox, and CSS Animations
+  - PWA Capabilities
+- **Backend**:
+  - Local Storage (For saving passwords and personal info)
+- **Tools & Libraries**:
+  - Webpack for bundling and building
+  - Babel for JavaScript transpiling
+  - Service Workers for offline access and caching
+  - Workbox for advanced caching and service worker management
+  - QRCode.js for QR code generation
 
-### `npm run build`
+## Deployment
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This app has been deployed using HostGator. The build folder can be uploaded to any server or hosted service.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Build the application for production:
+   ```bash
+   npm run build
+   ```
+2. Deploy the contents of the build/ folder to your preferred hosting provider.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## File Structure
 
-### `npm run eject`
+• public/: Static files like icons, manifest, etc.
+• src/: All the React components, utilities, and assets.
+• src/service-worker.js: Service worker file for caching and offline functionality.
+• webpack.config.js: Configuration for Webpack, used to bundle the app.
+• package.json: Project configuration file including dependencies and scripts.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Known Issues
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+• QR Code Size: The QR code generation might have a limitation in size if a long password or data is used.
+• PWA Installation: Some mobile browsers might require the app to be installed directly through their respective browser settings.
+Contributing
+We welcome contributions to make this project even better. If you would like to contribute, please fork the repository and submit a pull request.
+Steps to Contribute:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# secureMe-app
->>>>>>> d3ccefe50761b3a305096f97c8a1b7313aaaa126
+1. Fork the repository.
+2. Create a new branch (git checkout -b feature/your-feature).
+3. Commit your changes (git commit -am 'Add your feature').
+4. Push to the branch (git push origin feature/your-feature).
+5. Create a new Pull Request.
+   Contact
+   For more information or questions, feel free to reach out to me directly at:
+   • Email: golichbojan@gmail.com
+   • Website: Bojan Golic
+   License
+   This project is licensed under the MIT License - see the LICENSE file for details.
